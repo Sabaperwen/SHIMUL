@@ -2,12 +2,17 @@ package com.genericUtility;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -325,17 +330,17 @@ public class WebDriverUtility {
 		driver.switchTo().alert().dismiss();
 	}
 
-//		public static String getScreenShot(WebDriver driver, String screenshotName) throws IOException
-//		{
-//			JavaUtility jlib=new JavaUtility();
-//			TakesScreenshot ts=(TakesScreenshot) driver;
-//			File src = ts.getScreenshotAs(OutputType.FILE);
-//			String path=".\\Screenshot\\"+ screenshotName+jlib.getSystemDateInFormat()+".png";
-//			File dst=new File(path);
-//			String srcpath=dst.getAbsolutePath();
-//			FileUtils.copyFile(src, dst);
-//			return srcpath;
-//		}
+		public static String getScreenShot(WebDriver driver, String screenshotName) throws IOException
+		{
+			JavaUtility jlib=new JavaUtility();
+			TakesScreenshot ts=(TakesScreenshot) driver;
+			File src = ts.getScreenshotAs(OutputType.FILE);
+			String path=".\\Screenshot\\"+ screenshotName+jlib.getSystemDateInFormat()+".png";
+			File dst=new File(path);
+			String srcpath=dst.getAbsolutePath();
+			FileUtils.copyFile(src, dst);
+			return srcpath;             
+		}
 
 	public void scrollAction(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
